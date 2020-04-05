@@ -1,7 +1,73 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 
-afafaf
+<head>
+    <meta charset="utf-8">
+    <title>Expenditure</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <link href="fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Public+Sans:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta name="theme-color" content="#141526" />
+
+</head>
+<script src="node_modules/chart.js/dist/chart.js"></script>
+<script>
+    var myChart = new Chart(ctx, {
+        ...
+    });
+</script>
+
+
+
+
+<body></body>
+<div class="top-container">
+    <div class="topheader-left">
+        <h2>Savings Account ($)</h2>
+        <canvas id="myChart" width="400" height="200" style="margin-top: 0%;"></canvas>
+        <script>
+            Chart.defaults.global.defaultFontColor = 'white';
+            Chart.defaults.global.defaultFontFamily = 'Work Sans';
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Food', 'Transportation', 'Shopping', 'Leisure', 'Investment', 'Others'],
+                    datasets: [{
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'blue',
+                            'red',
+                            'white',
+                            'yellow',
+                            'orange',
+                            'black'
+                        ],
+                        borderColor: [
+                            'yellow',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1,
+                        borderColor: 'transparent',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'white',
+                    }]
+                },
+            });
+        </script>
+    </div>
+
+    <div class="topheader-right">
+        <h2>Grab Account</h2>
+    </div>
+</div>
 
 
 
