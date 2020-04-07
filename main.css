@@ -2,47 +2,85 @@ body {
     background-color: white;
 }
 
-
-.topcontainer {
+.all-types-container {
+    margin-top: 5%;
+    margin-left: 5%;
     display: flex;
 }
 
-.topheader-left {
+.savings-container {
+    background-color: aqua;
+    width: 20%;
+    border-radius: 5px;
+    margin-right: 3%;
+    line-height: 9%;
+}
+
+.savings-container h3 {
+    font-family: 'Work Sans', sans-serif;
+    color: black;
+    font-weight: bold;
     margin-left: 10%;
-    margin-top: 10%;
-    width: 35%;
-    height: 24em;
-    border-radius: 20px;
-    ;
-    background-color: #0074c6;
+}
+
+.savings-container h4 {
+    font-family: 'Work Sans', sans-serif;
+    color: black;
+    font-size: 14 px;
+    margin-left: 10%;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    justify-content: center;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
     float: left;
-}
-
-.topheader-left h2 {
-    padding-top: 10px;
-    padding-left: 20px;
-    font-family: 'Work Sans', sans-serif;
-    color: white;
-    letter-spacing: 2px;
-    font-size: 17px;
-}
-
-.topheader-right {
-    margin-right: 10%;
-    margin-top: 10%;
     width: 35%;
     height: 24em;
     border-radius: 20px;
-    ;
-    background-color: #009f35;
-    float: right;
+    margin-bottom: 20%;
+    margin-left: 5%;
+    margin-top: 5%;
 }
 
-.topheader-right h2 {
+.column h2 {
     padding-top: 10px;
-    padding-left: 20px;
+    padding-left: 5%;
     font-family: 'Work Sans', sans-serif;
     color: white;
     letter-spacing: 2px;
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+    .savings-container {
+        min-width: 65%;
+
+    }
 }

@@ -1,0 +1,80 @@
+<!--150% for mobile, 10% fpr top mobile-->
+        <canvas id="myChart" width="200%" height="100" style="margin-top: 0%;">
+        </canvas>
+        <script>
+            Chart.defaults.global.defaultFontColor = "white";
+            Chart.defaults.global.defaultFontFamily = "Work Sans";
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: [
+                        "Food",
+                        "Transportation",
+                        "Shopping",
+                        "Leisure",
+                        "Investment",
+                        "Others",
+                    ],
+                    datasets: [{
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            "blue",
+                            "red",
+                            "white",
+                            "yellow",
+                            "orange",
+                            "black",
+                        ],
+                        borderColor: [
+                            "yellow",
+                            "rgba(54, 162, 235, 1)",
+                            "rgba(255, 206, 86, 1)",
+                            "rgba(75, 192, 192, 1)",
+                            "rgba(153, 102, 255, 1)",
+                            "rgba(255, 159, 64, 1)",
+                        ],
+                        borderWidth: 1,
+                        borderColor: "transparent",
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: "white",
+                    }, ],
+                },
+            });
+        </script>
+
+
+
+
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyB590A3aoJtstgg8gZoVXGlHkBWLAjLzWQ",
+        authDomain: "money-s-e6527.firebaseapp.com",
+        databaseURL: "https://money-s-e6527.firebaseio.com",
+        projectId: "money-s-e6527",
+        storageBucket: "money-s-e6527.appspot.com",
+        messagingSenderId: "610868968674",
+        appId: "1:610868968674:web:bc04311cb15eea0586b2bb",
+        measurementId: "G-E73R6VDLM9"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database();
+
+    function writeUserData(userId, total, highest) {
+        firebase.database().ref('users/' + userId).set({
+            total: total,
+            highest: highest
+        });
+    }
+
+    writeUserData(4, "$246.64", "$4363.23")
+
+    firebase.database().ref('/users/4').on('value').then(function (snapshot) {
+        var total = (snapshot.val() && snapshot.val().total) || 'Anonymous';
+        console.log(total)
+    });
+</script>

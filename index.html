@@ -1,77 +1,144 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Expenditure</title>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Public+Sans:700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link href="fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Public+Sans:700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <meta name="theme-color" content="#141526" />
+    <script
+      src="https://kit.fontawesome.com/fdc798ee43.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-</head>
-<script src="node_modules/chart.js/dist/chart.js"></script>
-<script>
-    var myChart = new Chart(ctx, {
-        ...
-    });
-</script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
 
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
 
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+  </head>
 
-<body></body>
-<div class="top-container">
-    <div class="topheader-left">
-        <h2>Savings Account ($)</h2>
-        <canvas id="myChart" width="400" height="200" style="margin-top: 0%;"></canvas>
-        <script>
-            Chart.defaults.global.defaultFontColor = 'white';
-            Chart.defaults.global.defaultFontFamily = 'Work Sans';
-            var ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Food', 'Transportation', 'Shopping', 'Leisure', 'Investment', 'Others'],
-                    datasets: [{
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'blue',
-                            'red',
-                            'white',
-                            'yellow',
-                            'orange',
-                            'black'
-                        ],
-                        borderColor: [
-                            'yellow',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1,
-                        borderColor: 'transparent',
-                        hoverBorderWidth: 3,
-                        hoverBorderColor: 'white',
-                    }]
+  <body></body>
+
+  <div class="all-types-container">
+    <div class="savings-container">
+      <h3>
+        <i class="fas fa-money-bill-wave" style="font-size: 17px;"></i> Savings
+        Account
+      </h3>
+      <h4>
+        ($)
+      </h4>
+    </div>
+
+    <div class="savings-container">
+      <h3>
+        <i class="far fa-credit-card" style="font-size: 17px;"></i> Grab Account
+      </h3>
+      <h4>
+        ($)
+      </h4>
+    </div>
+
+    <div class="savings-container">
+      <h3>
+        <i class="fas fa-wallet" style="font-size: 17px;"></i> Cash Account
+      </h3>
+      <h4>
+        ($)
+      </h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column" id="panel1" style="background-color: #0074c6;">
+      <h2>Savings Account ($)</h2>
+      <!--150,5-->
+      <canvas
+        id="savingsAcc"
+        width="200"
+        height="100"
+        style="margin-top: 5%;"
+      ></canvas>
+      <script>
+        Chart.defaults.global.defaultFontColor = "white";
+        Chart.defaults.global.defaultFontFamily = "Work Sans";
+        Chart.defaults.global.defaultFontSize = 12;
+        Chart.defaults.global.animation.easing = "easeInOutCubic";
+        Chart.defaults.global.animation.duration = 2000;
+        Chart.defaults.global.legend.position = "bottom";
+        Chart.defaults.global.legend.fontSize = 1;
+        var ctx = document.getElementById("savingsAcc");
+
+        var savingsAcc = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["Nov", "Dec", "Jan", "Feb", "March", "April"],
+            datasets: [
+              {
+                label: "Amount ($)",
+                data: [4010.87, 1031.06, 1250.31, 1848.34, 1794.27, 1747.48],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                ],
+                borderWidth: 2,
+                borderColor: "white",
+              },
+            ],
+          },
+          options: {
+            legend: {
+              display: true,
+              labels: {
+                fontColor: "white",
+                fontSize: 15,
+              },
+            },
+
+            layout: {
+              padding: {
+                left: 10,
+                right: 0,
+                top: 0,
+                bottom: 0,
+              },
+            },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
                 },
-            });
-        </script>
+              ],
+            },
+          },
+        });
+      </script>
     </div>
-
-    <div class="topheader-right">
-        <h2>Grab Account</h2>
+    <div class="column" style="background-color: #009f35;">
+      <h2>Grab Account</h2>
     </div>
-</div>
-
-
-
-
-
-
+  </div>
 </html>
