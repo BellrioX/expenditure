@@ -1,144 +1,168 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Expenditure</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link href="fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Public+Sans:700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <meta name="theme-color" content="#141526" />
-    <script
-      src="https://kit.fontawesome.com/fdc798ee43.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<header>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Expenditure</title>
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<meta name="theme-color" content="#141526" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+		integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
 
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+</header>
 
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
-  </head>
+<body></body>
 
-  <body></body>
 
-  <div class="all-types-container">
-    <div class="savings-container">
-      <h3>
-        <i class="fas fa-money-bill-wave" style="font-size: 17px;"></i> Savings
-        Account
-      </h3>
-      <h4>
-        ($)
-      </h4>
-    </div>
+<div class="all-types-container">
+	<div class="savings-container" id="savingsacc-top" style="background-color: #0074c6;">
+		<h3 style="font-size: 13px; color: white;font-family: 'Roboto', sans-serif;letter-spacing: 0.5px;">
+			<i class=" fas fa-money-bill-wave" style="font-size: 15px; color:black;padding-right: 5px;"></i>
+			Savings Account
+		</h3>
+		<h4 id="sav-display"
+			style="font-size: 1rem;margin-left: 14%;margin-top: -3%;font-family: 'Roboto', sans-serif;letter-spacing: 1px;">
 
-    <div class="savings-container">
-      <h3>
-        <i class="far fa-credit-card" style="font-size: 17px;"></i> Grab Account
-      </h3>
-      <h4>
-        ($)
-      </h4>
-    </div>
+		</h4>
+	</div>
+	<div class="savings-container" id="grabacc-top" style="background-color: #009f35;">
+		<h3 style="font-size: 13px; color: white;font-family: 'Roboto', sans-serif;letter-spacing: 0.5px;">
+			<i class=" far fa-credit-card" style="font-size: 15px; color:black;padding-right: 5px;"></i> Grab Account
+		</h3>
+		<h4 id="grab-display"
+			style="font-size: 1rem;margin-left: 14%;margin-top: -3%;font-family: 'Roboto', sans-serif;letter-spacing: 1.2px;">
 
-    <div class="savings-container">
-      <h3>
-        <i class="fas fa-wallet" style="font-size: 17px;"></i> Cash Account
-      </h3>
-      <h4>
-        ($)
-      </h4>
-    </div>
-  </div>
+		</h4>
+	</div>
 
-  <div class="row">
-    <div class="column" id="panel1" style="background-color: #0074c6;">
-      <h2>Savings Account ($)</h2>
-      <!--150,5-->
-      <canvas
-        id="savingsAcc"
-        width="200"
-        height="100"
-        style="margin-top: 5%;"
-      ></canvas>
-      <script>
-        Chart.defaults.global.defaultFontColor = "white";
-        Chart.defaults.global.defaultFontFamily = "Work Sans";
-        Chart.defaults.global.defaultFontSize = 12;
-        Chart.defaults.global.animation.easing = "easeInOutCubic";
-        Chart.defaults.global.animation.duration = 2000;
-        Chart.defaults.global.legend.position = "bottom";
-        Chart.defaults.global.legend.fontSize = 1;
-        var ctx = document.getElementById("savingsAcc");
+	<div class=" savings-container" id="cashacc-top" style="background-color: #fc8dd8;">
+		<h3 style="font-size: 13px; color: white;font-family: 'Roboto', sans-serif;letter-spacing: 0.5px;">
+			<i class="fas fa-wallet" style="font-size: 15px; color:black;padding-right: 5px;"></i> Cash Account
+		</h3>
+		<h4 id="cash-display"
+			style="font-size: 1rem;margin-left: 14%;margin-top: -3%;font-family: 'Roboto', sans-serifletter-spacing: 1px;">
 
-        var savingsAcc = new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: ["Nov", "Dec", "Jan", "Feb", "March", "April"],
-            datasets: [
-              {
-                label: "Amount ($)",
-                data: [4010.87, 1031.06, 1250.31, 1848.34, 1794.27, 1747.48],
-                borderColor: [
-                  "rgba(255, 99, 132, 1)",
-                  "rgba(54, 162, 235, 1)",
-                  "rgba(255, 206, 86, 1)",
-                  "rgba(75, 192, 192, 1)",
-                  "rgba(153, 102, 255, 1)",
-                  "rgba(255, 159, 64, 1)",
-                ],
-                borderWidth: 2,
-                borderColor: "white",
-              },
-            ],
-          },
-          options: {
-            legend: {
-              display: true,
-              labels: {
-                fontColor: "white",
-                fontSize: 15,
-              },
-            },
+		</h4>
+	</div>
+</div>
 
-            layout: {
-              padding: {
-                left: 10,
-                right: 0,
-                top: 0,
-                bottom: 0,
-              },
-            },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    beginAtZero: true,
-                  },
-                },
-              ],
-            },
-          },
-        });
-      </script>
-    </div>
-    <div class="column" style="background-color: #009f35;">
-      <h2>Grab Account</h2>
-    </div>
-  </div>
+<div class="row">
+	<div class="column" id="savingsacc" style="background-color: #0074c6;">
+		<h2>Savings Account ($)</h2>
+		<!--150,5-->
+		<canvas id="savingsAcc" width="200" height="110" style="margin-top: 5%;"></canvas>
+		<script>
+			Chart.defaults.global.defaultFontColor = "white";
+			Chart.defaults.global.defaultFontFamily = "Work Sans";
+			Chart.defaults.global.defaultFontSize = 12;
+			Chart.defaults.global.animation.easing = "easeInOutCubic";
+			Chart.defaults.global.animation.duration = 2000;
+			Chart.defaults.global.legend.position = "bottom";
+			Chart.defaults.global.legend.fontSize = 1;
+			var ctx = document.getElementById("savingsAcc");
+
+			var savingsAcc = new Chart(ctx, {
+				type: "line",
+				data: {
+					labels: ["Nov", "Dec", "Jan", "Feb", "March", "April"],
+					datasets: [{
+						label: "Amount ($)",
+						data: [4010.87, 1031.06, 1250.31, 1848.34, 1794.27, 1747.48],
+						borderColor: [
+							"rgba(255, 99, 132, 1)",
+							"rgba(54, 162, 235, 1)",
+							"rgba(255, 206, 86, 1)",
+							"rgba(75, 192, 192, 1)",
+							"rgba(153, 102, 255, 1)",
+							"rgba(255, 159, 64, 1)",
+						],
+						borderWidth: 2,
+						borderColor: "white",
+					}, ],
+				},
+				options: {
+					legend: {
+						display: true,
+						labels: {
+							fontColor: "white",
+							fontSize: 15,
+						},
+					},
+
+					layout: {
+						padding: {
+							left: 5,
+							right: 0,
+							top: 20,
+							bottom: 5,
+						},
+					},
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true,
+							},
+						}, ],
+					},
+				},
+			});
+		</script>
+	</div>
+
+
+	<div class="column" id="grabacc" style="background-color: #009f35;">
+		<h2>Grab Account</h2>
+	</div>
+	<div class="column" id="cashacc" style="background-color: #fc8dd8;">
+		<h2>Cash Account</h2>
+	</div>
+
+
+
+</div>
+
+
+<script>
+	var savingsacc = (Math.random() * (9999 - 1.00 + 1.00) + 1.00).toFixed(2);
+	var grabacc = (Math.random() * (9999 - 1.00 + 1.00) + 1.00).toFixed(2);
+	var cashacc = (Math.random() * (9999 - 1.00 + 1.00) + 1.00).toFixed(2);
+
+	// Example:
+
+
+	function myFunction() {
+		document.getElementById("sav-display").innerHTML = "SGD " + savingsacc;
+	}
+
+	// function myFunction1() {
+	// 	document.getElementById("grab-display").innerHTML = "SGD " + grabacc;
+	// }
+
+	function myFunction2() {
+		document.getElementById("cash-display").innerHTML = "SGD " + cashacc;
+	}
+
+
+	myFunction()
+	// myFunction1()
+	myFunction2()
+</script>
+
+
+
+<body>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<!-- <script type="text/javascript" src="js/global.js"></script> -->
+
+
+
+	<script type="text/javascript" src="js/bundle.js"></script>
+	<script type="text/javascript" src="js/test.firestore.js"></script>
+
 </html>
