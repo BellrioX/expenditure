@@ -198,15 +198,27 @@ function myFunction1() {
 
     var db = firebase.firestore();
 
+    // db.collection("user").add({
+    //         type: "Sports",
+    //         spent: 25252,
+    //         fs_timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    //     })
+    //     .then(function (docRef) {
+    //         console.log("Document written with ID: ", docRef.id);
+    //     })
+    //     .catch(function (error) {
+    //         console.error("Error adding document: ", error);
+    //     });
+
     db.collection("user").orderBy("fs_timestamp", "desc").limit(1).get().then(snapshot => {
         snapshot.forEach(function (doc) {
             // doc.data() is never undefined for query doc snapshots
+            let initial = 1000;
+            console.log("Initial Money =", initial);
             const data = doc.data();
-            console.log(doc.id, " => ", data.spent);
-            console.log("Spent", data.spent);
             var x = data.spent;
-            console.log("X = ", x);
-            document.getElementById("grab-display").innerHTML = "SGD " + x;
+            console.log("Spent $", x);
+            document.getElementById("grab-display").innerHTML = "SGD " + initial;
         });
     });
 }
