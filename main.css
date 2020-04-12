@@ -85,42 +85,6 @@ h4 {
     clear: both;
 }
 
-.trans-hist {
-    background-color: #EFF0F2;
-    padding-top: 20px;
-    height: 900px;
-    border-radius: 10px;
-
-}
-
-.trans-hist-title h2 {
-    margin-top: 0%;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 1.2rem;
-    margin-left: 7%;
-}
-
-.trans-hist-data {
-    display: flex;
-    font-family: 'Work Sans', sans-serif;
-
-}
-
-.trans-type {
-    margin-left: 7%;
-    font-size: 14px;
-}
-
-.trans-hist-amount {
-    margin-left: 10%;
-    font-size: 14px;
-}
-
-.trans-hist-timestamp {
-    float: right;
-    margin-left: 10%;
-    font-size: 14px;
-}
 
 
 
